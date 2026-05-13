@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "SUITE Variable";
+  src: url("/fonts/SUIT-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@theme {
+  /* Raw Palette */
+  --color-sage: #99bc85;
+  --color-mint: #e4efe7;
+  --color-cream: #fdfaf6;
+  --color-peach: #faf1e6;
+  --color-charcoal: #3d3d3d;
+
+  /* Surface */
+  --color-surface-primary: #fdfaf6;
+  --color-surface-secondary: #faf1e6;
+  --color-surface-elevated: #ffffff;
+  --color-surface-accent: #e4efe7;
+
+  /* Text */
+  --color-text-primary: #3d3d3d;
+  --color-text-secondary: #5c5c5c;
+  --color-text-muted: #8a8a8a;
+  --color-text-inverse: #ffffff;
+
+  /* Accent */
+  --color-accent-primary: #99bc85;
+  --color-accent-soft: #e4efe7;
+
+  /* Border */
+  --color-border-default: #e6e0d8;
+  --color-border-soft: #f1ece5;
+
+  /* Typography */
+  --font-sans: "SUITE Variable", sans-serif;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
