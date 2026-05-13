@@ -32,7 +32,13 @@ export default defineConfig([
             // 2. 외부 라이브러리
             ['^@?\\w'],
             // 3. 내부 절대경로
-            ['^@/[^/]+$', '^@/hooks', '^@/components/ui', '^@/components'],
+            [
+              '^@/[^/]+$',
+              '^@/hooks',
+              '^@/components/ui',
+              '^@/components',
+              '^@/',
+            ],
             // 4. 상대경로
             ['^\\.'],
             // 5. 스타일 파일
