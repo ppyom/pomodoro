@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { TIMER_PRESETS, type TimerPresetKey } from '@/constants/timer-presets';
+import { formatTime } from '@/utils/format-time';
 import { playAlarm } from '@/utils/play-alarm';
 
 export function useTimer(initialPreset: TimerPresetKey = 'test') {
@@ -44,7 +45,20 @@ export function useTimer(initialPreset: TimerPresetKey = 'test') {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isRunning, timeLeft]);
+  }, [isRunning]);
+
+  useEffect(() => {
+    const formatted = formatTime(timeLeft);
+
+    if (timeLeft === 0) {
+      document.title = '✔ Done · POMODORO';
+      return;
+    }
+
+    document.title = isRunning
+      ? `⏱ ${formatted} · POMODORO`
+      : `⏸ ${formatted} · POMODORO`;
+  }, [timeLeft, isRunning]);
 
   return {
     selectedPreset,
