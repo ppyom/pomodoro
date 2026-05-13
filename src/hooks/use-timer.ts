@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { playAlarm } from '@/utils/play-alarm';
+
 const DEFAULT_DURATION = 10; // 25 * 60; // 25m
 
 export function useTimer(initialDuration = DEFAULT_DURATION) {
@@ -29,8 +31,8 @@ export function useTimer(initialDuration = DEFAULT_DURATION) {
     const timer = setInterval(() => {
       setTimeLeft((p) => {
         if (p <= 1) {
-          clearInterval(timer);
           setIsRunning(false);
+          playAlarm();
           return 0;
         }
         return p - 1;
@@ -38,7 +40,7 @@ export function useTimer(initialDuration = DEFAULT_DURATION) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isRunning]);
+  }, [isRunning, timeLeft]);
 
   return {
     timeLeft,
