@@ -1,13 +1,19 @@
 import { formatTime } from '@/utils/format-time';
 
+import { CircularProgress } from './circular-progress';
+
 interface Props {
-  timeLeft: number
+  duration: number;
+  timeLeft: number;
 }
 
-export function TimerDisplay({timeLeft}: Props) {
+export function TimerDisplay({ duration, timeLeft }: Props) {
   return (
-    <h1 className="mt-8 text-center text-8xl font-semibold tracking-tight text-text-primary">
-      {formatTime(timeLeft)}
-    </h1>
+    <div className="relative flex items-center justify-center">
+      <CircularProgress progress={timeLeft / duration} />
+      <div className="absolute inset-0 text-4xl font-semibold flex items-center justify-center text-text-primary">
+        {formatTime(timeLeft)}
+      </div>
+    </div>
   );
 }

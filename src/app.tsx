@@ -2,7 +2,7 @@ import { useTimer } from '@/hooks/use-timer';
 import { TimerControls, TimerDisplay, TimerPresets } from '@/components/timer';
 
 export default function App() {
-  const { timeLeft, isRunning, start, pause, reset, changeDuration } =
+  const { duration, timeLeft, isRunning, start, pause, reset, changeDuration } =
     useTimer();
 
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <section className="w-full max-w-md rounded-[24px] border border-border-soft bg-surface-elevated p-10">
         <p className="text-center text-sm text-text-muted">Focus Timer</p>
 
-        <TimerDisplay timeLeft={timeLeft} />
+        <TimerDisplay duration={duration} timeLeft={timeLeft} />
         <TimerControls
           isRunning={isRunning}
           onStart={start}

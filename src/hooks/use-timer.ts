@@ -43,6 +43,7 @@ export function useTimer(initialDuration = DEFAULT_DURATION) {
   }, [isRunning, timeLeft]);
 
   return {
+    duration,
     timeLeft,
     isRunning,
     start,
