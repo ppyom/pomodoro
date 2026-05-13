@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui';
+
 interface Props {
   isRunning: boolean;
   onStart: () => void;
@@ -8,15 +10,16 @@ interface Props {
 export function TimerControls({ isRunning, onStart, onPause, onReset }: Props) {
   return (
     <>
-      <button
-        className="mt-10 w-full rounded-2xl bg-accent-primary py-4 text-sm font-medium text-white transition-all"
+      <Button
+        className="mt-8 w-full py-4"
+        variant="primary"
         onClick={isRunning ? onPause : onStart}
       >
         {isRunning ? 'Pause' : 'Start'}
-      </button>
-      <button onClick={onReset} className="mt-4 w-full">
+      </Button>
+      <Button className="mt-4 w-full" variant="outline" onClick={onReset}>
         Reset
-      </button>
+      </Button>
     </>
   );
 }

@@ -1,3 +1,5 @@
+import { Button } from '@/components/ui';
+
 interface Props {
   onChangeDuration: (seconds: number) => void;
 }
@@ -13,9 +15,9 @@ export function TimerPresets({ onChangeDuration }: Props) {
   return (
     <div className="mt-6 flex justify-center gap-3">
       {PRESETS.map((p) => (
-        <button key={p.time} onClick={() => onChangeDuration(p.time)}>
+        <Button key={p.time} onClick={() => onChangeDuration(p.time)}>
           {p.label}
-        </button>
+        </Button>
       ))}
     </div>
   );
