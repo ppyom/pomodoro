@@ -15,9 +15,8 @@ export default function App() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface-primary px-6 font-sans">
-      <section className="w-full max-w-md rounded-[24px] border border-border-soft bg-surface-elevated p-10">
+      <section className="w-full max-w-md rounded-lg border border-border-soft bg-surface-elevated p-10">
         <p className="text-center text-sm text-text-muted">Focus Timer</p>
-
         <TimerDisplay duration={duration} timeLeft={timeLeft} />
         <TimerControls
           isRunning={isRunning}

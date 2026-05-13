@@ -3,7 +3,7 @@ export function CircularProgress({ progress }: { progress: number }) {
   const circumference = 2 * Math.PI * radius;
 
   return (
-    <svg viewBox="0 0 240 240" className="size-64 -rotate-90 flex">
+    <svg viewBox="0 0 240 240" className="size-48 sm:size-64 -rotate-90 flex">
       <circle
         className="stroke-accent-soft"
         cx="120"
