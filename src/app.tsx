@@ -1,11 +1,9 @@
 import { useTimer } from '@/hooks/use-timer';
+import { formatTime } from '@/utils/format-time';
 
 export default function App() {
   const { timeLeft, isRunning, start, pause, reset, changeDuration } =
     useTimer();
-
-  const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
-  const s = String(timeLeft % 60).padStart(2, '0');
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface-primary px-6 font-sans">
@@ -13,7 +11,7 @@ export default function App() {
         <p className="text-center text-sm text-text-muted">Focus Timer</p>
 
         <h1 className="mt-8 text-center text-8xl font-semibold tracking-tight text-text-primary">
-          {m}:{s}
+          {formatTime(timeLeft)}
         </h1>
 
         <button
