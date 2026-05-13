@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
+import { TIMER_PRESETS, type TimerPresetKey } from '@/constants/timer-presets';
 import { playAlarm } from '@/utils/play-alarm';
 
-const DEFAULT_DURATION = 10; // 25 * 60; // 25m
-
-export function useTimer(initialDuration = DEFAULT_DURATION) {
-  const [duration, setDuration] = useState(initialDuration);
-  const [timeLeft, setTimeLeft] = useState(initialDuration);
+export function useTimer(initialPreset: TimerPresetKey = 'test') {
+  const [selectedPreset, setSelectedPreset] =
+    useState<TimerPresetKey>(initialPreset);
+  const duration = useMemo<number>(
+    () => TIMER_PRESETS[selectedPreset].value,
+    [selectedPreset],
+  );
+  const [timeLeft, setTimeLeft] = useState(TIMER_PRESETS[selectedPreset].value);
   const [isRunning, setIsRunning] = useState(false);
 
   // 타이머 시작
@@ -19,9 +23,9 @@ export function useTimer(initialDuration = DEFAULT_DURATION) {
     setTimeLeft(duration);
   };
   // preset 변경
-  const changeDuration = (next: number) => {
-    setDuration(next);
-    setTimeLeft(next);
+  const changeDuration = (key: TimerPresetKey) => {
+    setSelectedPreset(key);
+    setTimeLeft(TIMER_PRESETS[key].value);
     setIsRunning(false);
   };
 
@@ -43,6 +47,7 @@ export function useTimer(initialDuration = DEFAULT_DURATION) {
   }, [isRunning, timeLeft]);
 
   return {
+    selectedPreset,
     duration,
     timeLeft,
     isRunning,

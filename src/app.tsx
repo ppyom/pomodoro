@@ -2,8 +2,16 @@ import { useTimer } from '@/hooks/use-timer';
 import { TimerControls, TimerDisplay, TimerPresets } from '@/components/timer';
 
 export default function App() {
-  const { duration, timeLeft, isRunning, start, pause, reset, changeDuration } =
-    useTimer();
+  const {
+    selectedPreset,
+    duration,
+    timeLeft,
+    isRunning,
+    start,
+    pause,
+    reset,
+    changeDuration,
+  } = useTimer();
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-surface-primary px-6 font-sans">
@@ -17,7 +25,10 @@ export default function App() {
           onPause={pause}
           onReset={reset}
         />
-        <TimerPresets onChangeDuration={changeDuration} />
+        <TimerPresets
+          selectedPreset={selectedPreset}
+          onChangeDuration={changeDuration}
+        />
       </section>
     </main>
   );
